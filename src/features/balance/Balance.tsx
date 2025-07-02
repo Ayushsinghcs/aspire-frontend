@@ -39,7 +39,7 @@ const Balance = () => {
           className="text-[13px] font-bold p-3 text-blue md:text-white"
           onClick={() => setOpenModal(true)}
         >
-          New Card
+          New card
         </Button>
       </Flex>
 
