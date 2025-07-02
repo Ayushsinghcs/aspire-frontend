@@ -73,19 +73,14 @@ src/
 └── vite-env.d.ts    # Vite environment types
 ```
 
-## 🎨 UI Components
-
-The application uses a combination of:
-- **Ant Design** for UI components
-- **Tailwind CSS** for custom styling
-- **Responsive design** with mobile-first approach
-
 ### Key Components
 
-- **Navigation**: Sidebar navigation for desktop, bottom navigation for mobile
-- **Balance Display**: Shows current account balance
-- **Card Management**: Credit/debit card display and actions
-- **Transaction List**: Recent transaction history
+- **Layout System**: Ant Design Layout with responsive Sider and Content areas
+- **Navigation**: Sidebar navigation for desktop, bottom navigation for mobile using Ant Design Menu
+- **Balance Display**: Shows current account balance with custom styling
+- **Card Management**: Credit/debit card carousel with show/hide functionality
+- **Transaction List**: Recent transaction history with tabbed interface
+- **Modal Components**: New card creation modal with form validation
 
 ## 🔧 Configuration
 
@@ -139,41 +134,3 @@ npm run lint
 # Fix auto-fixable issues
 npm run lint -- --fix
 ```
-
-### Code Formatting
-
-The project uses Prettier for code formatting. Configure your editor to format on save or run:
-
-```bash
-npx prettier --write .
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👨‍💻 Author
-
-**Ayush** - [GitHub](https://github.com/ayush)
-
-## 🐛 Issues
-
-If you encounter any issues, please report them on the [GitHub Issues page](https://github.com/ayush/aspire-frontend/issues).
-
-## 📞 Support
-
-For support and questions:
-- Create an issue on GitHub
-- Contact the maintainer
-
----
-
-**Note**: This is a frontend application for the Aspire project. Make sure to have the backend API running if you need to connect to real data instead of using the mock service worker.
