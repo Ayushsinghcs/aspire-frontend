@@ -9,9 +9,10 @@ import { Provider } from 'react-redux'
 import { store } from './core/store'
 import { fetchCards } from './core/store/cardSlice'
 
-import { worker } from './core/browser'
+import { startWorker } from './core/browser'
 
-worker.start().then(() => {
+// Start MSW worker only in development
+startWorker().then(() => {
   const container = document.getElementById('root')
   if (!container) throw new Error('Root container not found')
 

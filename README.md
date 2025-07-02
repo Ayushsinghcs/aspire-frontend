@@ -111,17 +111,50 @@ The application is fully responsive with:
 
 ## 🚀 Deployment
 
-### Building for Production
+### Quick Deployment to Netlify
 
+#### Option 1: Automated Script
 ```bash
-# Using npm
-npm run build
-
-# Using pnpm
-pnpm build
+# Run the deployment script
+./deploy.sh
 ```
 
-The build output will be in the `dist/` directory.
+#### Option 2: Manual Build
+```bash
+# Build for production
+npm run build
+
+# The build output will be in the dist/ directory
+```
+
+### Netlify Deployment
+
+This application is configured for easy deployment on Netlify:
+
+1. **Visit [Netlify](https://netlify.com)** and sign up/login
+2. **Click "New site from Git"**
+3. **Select your repository**: `Ayushsinghcs/aspire-frontend`
+4. **Build settings** (auto-configured):
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+5. **Click "Deploy site"**
+
+### Configuration Files
+
+The following files are pre-configured for Netlify:
+- `netlify.toml` - Netlify configuration with SPA redirects and security headers
+- `.nvmrc` - Node.js version specification
+- `DEPLOYMENT.md` - Detailed deployment guide
+
+### Features
+
+- ✅ **SPA Routing**: Configured to handle client-side routing
+- ✅ **Security Headers**: XSS protection, content type options, etc.
+- ✅ **Asset Caching**: Optimized caching for static assets
+- ✅ **Mobile Responsive**: Fully responsive design
+- ✅ **Mock API**: MSW configured for development, disabled in production
+
+For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md).
 
 ## 🔍 Code Quality
 
