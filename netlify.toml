@@ -12,21 +12,23 @@
   [build.environment]
     NODE_VERSION = "18"
 
-# Redirects for SPA (Single Page Application)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-# API redirects for Netlify Functions
+# API redirects for Netlify Functions (MUST come before SPA redirect)
 [[redirects]]
   from = "/api/cards"
   to = "/.netlify/functions/cards"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/api/cards/*"
+  from = "/api/cards/:id"
   to = "/.netlify/functions/card"
+  status = 200
+  force = true
+
+# Redirects for SPA (Single Page Application) - MUST come after API redirects
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
   status = 200
 
 # Headers for better performance and security
