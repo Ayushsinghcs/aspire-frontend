@@ -67,14 +67,50 @@ The following configuration files are already set up for Netlify deployment:
 - Configures SPA redirects for client-side routing
 - Sets security headers
 - Configures caching for static assets
+- **NEW**: Configures Netlify Functions for API endpoints
 
 ### `.nvmrc`
 - Specifies Node.js version 18 for consistent builds
 
+## API Endpoints
+
+Your application now includes **Netlify Functions** to handle API requests in production:
+
+### Available Endpoints
+
+- **GET** `/api/cards` - Fetch all cards
+- **POST** `/api/cards` - Create a new card
+- **GET** `/api/cards/:id` - Fetch a specific card
+- **PUT** `/api/cards/:id` - Update a specific card
+
+### How It Works
+
+1. **Development**: Uses Mock Service Worker (MSW) for API mocking
+2. **Production**: Uses Netlify Functions to serve API endpoints
+3. **Automatic Routing**: The `netlify.toml` file redirects `/api/*` requests to the appropriate functions
+
+### Testing API Endpoints
+
+After deployment, you can test the API endpoints:
+
+```bash
+# Get all cards
+curl https://your-site.netlify.app/api/cards
+
+# Get a specific card
+curl https://your-site.netlify.app/api/cards/1
+
+# Create a new card
+curl -X POST https://your-site.netlify.app/api/cards \
+  -H "Content-Type: application/json" \
+  -d '{"name": "John Doe"}'
+```
+
 ## Environment Variables
 
 Currently, no environment variables are required for this application as it uses:
-- Mock Service Worker (MSW) for API mocking
+- Mock Service Worker (MSW) for API mocking in development
+- Netlify Functions for API endpoints in production
 - Local storage for data persistence
 - No external API dependencies
 
@@ -108,6 +144,11 @@ Once deployed, Netlify will automatically:
 - The `netlify.toml` file includes SPA redirects to handle this
 - If issues persist, check the redirect configuration
 
+### API Endpoint Issues
+- Check Netlify Functions logs in the dashboard
+- Verify the function files are in the correct location (`netlify/functions/`)
+- Ensure the redirects in `netlify.toml` are correct
+
 ### Performance Issues
 - Static assets are configured with long-term caching
 - Consider enabling Netlify's asset optimization features
@@ -116,11 +157,13 @@ Once deployed, Netlify will automatically:
 
 - **Analytics**: Enable Netlify Analytics in your site settings
 - **Forms**: Netlify automatically handles form submissions
-- **Functions**: Add serverless functions if needed
+- **Functions**: Monitor function execution in the Functions tab
+- **API Logs**: Check function logs for API endpoint issues
 
 ## Support
 
 For additional help:
 - [Netlify Documentation](https://docs.netlify.com/)
+- [Netlify Functions Guide](https://docs.netlify.com/functions/overview/)
 - [Netlify Community](https://community.netlify.com/)
 - [Vite Deployment Guide](https://vitejs.dev/guide/static-deploy.html) 

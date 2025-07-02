@@ -5,6 +5,9 @@
   # Directory to publish (relative to the repository root)
   publish = "dist"
   
+  # Functions directory
+  functions = "netlify/functions"
+  
   # Node.js version to use for build
   [build.environment]
     NODE_VERSION = "18"
@@ -13,6 +16,17 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
+  status = 200
+
+# API redirects for Netlify Functions
+[[redirects]]
+  from = "/api/cards"
+  to = "/.netlify/functions/cards"
+  status = 200
+
+[[redirects]]
+  from = "/api/cards/*"
+  to = "/.netlify/functions/card"
   status = 200
 
 # Headers for better performance and security
