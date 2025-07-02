@@ -47,7 +47,10 @@ const CardCarousel = () => {
           <div key={index} className="relative mt-[28px] md:mt-[29px]">
             <button
               onClick={() => handleToggleVisibility(card.id)}
-              className="absolute -top-[28px] right-[16px] md:right-0 z-0 bg-white px-[10px] md:px-0 pt-[5px] pb-[18px] md:py-0 rounded-t-md flex items-center gap-2 cursor-pointer text-primary"
+              disabled={isBlurred}
+              className={`absolute -top-[28px] right-[16px] md:right-0 z-0 bg-white px-[10px] md:px-0 pt-[5px] pb-[18px] md:py-0 rounded-t-md flex items-center gap-2 cursor-pointer text-primary ${
+                isBlurred ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
             >
               <Eye className="w-4 h-4" />
               <span className="text-sm md:font-bold font-semibold">
