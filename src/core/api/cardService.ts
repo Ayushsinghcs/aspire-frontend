@@ -13,7 +13,15 @@ export const cardService = {
    */
   getCards: async (): Promise<Card[]> => {
     try {
-      const response = await fetch(CARD_CONSTANTS.ENDPOINTS.CARDS)
+      const response = await fetch(CARD_CONSTANTS.ENDPOINTS.CARDS, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        // Use cache-first strategy for better performance
+        cache: 'default',
+      })
       
       if (!response.ok) {
         throw new Error(CARD_CONSTANTS.ERROR_MESSAGES.FETCH_CARDS_FAILED)
@@ -34,7 +42,15 @@ export const cardService = {
    */
   getCard: async (id: number): Promise<Card> => {
     try {
-      const response = await fetch(CARD_CONSTANTS.ENDPOINTS.CARD_BY_ID(id))
+      const response = await fetch(CARD_CONSTANTS.ENDPOINTS.CARD_BY_ID(id), {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        // Use cache-first strategy for better performance
+        cache: 'default',
+      })
       
       if (!response.ok) {
         if (response.status === CARD_CONSTANTS.HTTP_STATUS.NOT_FOUND) {
@@ -61,9 +77,12 @@ export const cardService = {
       const response = await fetch(CARD_CONSTANTS.ENDPOINTS.CARDS, {
         method: 'POST',
         headers: {
+          'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(cardData),
+        // Don't cache POST requests
+        cache: 'no-store',
       })
 
       if (!response.ok) {
@@ -89,9 +108,12 @@ export const cardService = {
       const response = await fetch(CARD_CONSTANTS.ENDPOINTS.CARD_BY_ID(id), {
         method: 'PUT',
         headers: {
+          'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(cardData),
+        // Don't cache PUT requests
+        cache: 'no-store',
       })
 
       if (!response.ok) {

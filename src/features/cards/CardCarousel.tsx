@@ -1,4 +1,4 @@
-import { Carousel, Grid } from 'antd'
+import { Carousel, Grid, Skeleton } from 'antd'
 import AspireLogo from '../../assets/icons/aspire-logo.svg?react'
 import Eye from '../../assets/icons/Eye.svg?react'
 import VisaLogo from '../../assets/icons/VisaLogo.svg?react'
@@ -16,7 +16,7 @@ const Ellipses = () => (
 const { useBreakpoint } = Grid
 
 const CardCarousel = () => {
-  const { cards, selectedCard, cardDetailsVisibility } = useAppSelector((state) => state.card)
+  const { cards, selectedCard, cardDetailsVisibility, loading } = useAppSelector((state) => state.card)
   const dispatch = useAppDispatch()
   const screen = useBreakpoint()
   const isMobile = !screen.md
@@ -27,6 +27,19 @@ const CardCarousel = () => {
 
   const handleCardSelect = (cardId: number) => {
     dispatch(selectCard(cardId))
+  }
+
+  if (loading) {
+    return (
+      <div className="absolute w-[474px] md:relative md:w-[414px]">
+        <div className="relative mt-[28px] md:mt-[29px] transition-opacity duration-300 ease-in-out">
+          <Skeleton.Button 
+            active 
+            className="w-[358px] md:w-[414px] h-[200px] rounded-xl"
+          />
+        </div>
+      </div>
+    )
   }
 
   return (

@@ -11,13 +11,16 @@ import { fetchCards } from './core/store/cardSlice'
 
 import { startWorker } from './core/browser'
 
-// Start MSW worker only in development
-startWorker().then(() => {
+// Start MSW worker and initialize app
+const initializeApp = async () => {
+  // Start MSW worker first
+  await startWorker()
+  
+  // Preload cards data immediately after worker is ready
+  store.dispatch(fetchCards())
+  
   const container = document.getElementById('root')
   if (!container) throw new Error('Root container not found')
-
-  // Initialize cards on app start
-  store.dispatch(fetchCards())
 
   createRoot(container).render(
     <StrictMode>
@@ -30,4 +33,7 @@ startWorker().then(() => {
       </Provider>
     </StrictMode>
   )
-})
+}
+
+// Initialize the app
+initializeApp().catch(console.error)

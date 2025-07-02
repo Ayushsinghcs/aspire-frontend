@@ -16,6 +16,14 @@ export const startWorker = async (): Promise<void> => {
     try {
       await worker.start({
         onUnhandledRequest: 'bypass', // Ignore unhandled requests
+        serviceWorker: {
+          url: '/mockServiceWorker.js',
+          options: {
+            scope: '/',
+          },
+        },
+        // Enable faster response times
+        waitUntilReady: false,
       })
       console.log('MSW worker started successfully')
     } catch (error) {

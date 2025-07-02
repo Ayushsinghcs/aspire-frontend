@@ -11,12 +11,14 @@ import CardMobile from './features/cards/CardMobile'
 import CardActions from './features/cards/CardActions'
 import CardDetails from './features/cards/CardDetails'
 import TransactionList from './features/cards/TransactionList'
+import { useAppSelector } from './core/store/hooks'
 
 const { useBreakpoint } = Grid
 
 function App() {
   const screens = useBreakpoint()
   const isMobile = !screens.md
+  const { loading } = useAppSelector((state) => state.card)
 
   return (
     <Layout className="app-layout relative">
@@ -39,7 +41,7 @@ function App() {
         <Balance />
         {!isMobile ? <CardDesktop /> : <CardMobile />}
       </Content>
-      {isMobile && (
+      {isMobile && !loading && (
         <Content className="overflow-auto w-full h-[calc(100%_-_56px)] absolute pointer-events-none z-50">
           <div className="mt-[495px] pointer-events-auto bg-white pb-16 rounded-t-3xl">
             <CardActions className="rounded-t-3xl rounded-b-none" />
