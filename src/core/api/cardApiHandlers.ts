@@ -24,7 +24,12 @@ export const handlers = [
   http.get(CARD_CONSTANTS.ENDPOINTS.CARDS, () => {
     try {
       const cards = getStoredCards()
-      return HttpResponse.json(cards)
+      return HttpResponse.json(cards, {
+        headers: {
+          'Cache-Control': 'public, max-age=300', // Cache for 5 minutes
+          'Content-Type': 'application/json',
+        },
+      })
     } catch (error) {
       console.error('Error in GET /api/cards handler:', error)
       return new HttpResponse(null, { 
@@ -50,7 +55,12 @@ export const handlers = [
         })
       }
 
-      return HttpResponse.json(card)
+      return HttpResponse.json(card, {
+        headers: {
+          'Cache-Control': 'public, max-age=300', // Cache for 5 minutes
+          'Content-Type': 'application/json',
+        },
+      })
     } catch (error) {
       console.error('Error in GET /api/cards/:id handler:', error)
       return new HttpResponse(null, { 
@@ -76,7 +86,10 @@ export const handlers = [
       saveCardsToStorage(cards)
 
       return HttpResponse.json(cardWithId, { 
-        status: CARD_CONSTANTS.HTTP_STATUS.CREATED 
+        status: CARD_CONSTANTS.HTTP_STATUS.CREATED,
+        headers: {
+          'Content-Type': 'application/json',
+        },
       })
     } catch (error) {
       console.error('Error in POST /api/cards handler:', error)
@@ -88,12 +101,12 @@ export const handlers = [
   }),
 
   /**
-   * PUT /api/cards/:id - Update an existing card
+   * PUT /api/cards/:id - Update a specific card
    */
-  http.put('/api/cards/:id', async ({ request, params }) => {
+  http.put('/api/cards/:id', async ({ params, request }) => {
     try {
       const cardId = Number(params.id)
-      const updatedData = (await request.json()) as Partial<Card>
+      const updateData = (await request.json()) as Partial<Card>
       const cards = getStoredCards()
       const cardIndex = findCardIndexById(cards, cardId)
 
@@ -104,11 +117,16 @@ export const handlers = [
         })
       }
 
-      // Update the card with new data
-      cards[cardIndex] = { ...cards[cardIndex], ...updatedData }
+      // Update the card
+      const updatedCard = { ...cards[cardIndex], ...updateData }
+      cards[cardIndex] = updatedCard
       saveCardsToStorage(cards)
 
-      return HttpResponse.json(cards[cardIndex])
+      return HttpResponse.json(updatedCard, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
     } catch (error) {
       console.error('Error in PUT /api/cards/:id handler:', error)
       return new HttpResponse(null, { 
