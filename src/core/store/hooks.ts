@@ -1,0 +1,14 @@
+import { useDispatch, useSelector, type TypedUseSelectorHook } from 'react-redux'
+import type { RootState, AppDispatch } from './index'
+
+/**
+ * Typed version of useDispatch hook
+ * Provides proper TypeScript support for dispatch actions
+ */
+export const useAppDispatch: () => AppDispatch = useDispatch
+
+/**
+ * Typed version of useSelector hook
+ * Provides proper TypeScript support for state selection
+ */
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector 

@@ -1,29 +1,11 @@
 # Aspire Frontend
 
-A modern React-based frontend application built with Vite, TypeScript, and Ant Design for the Aspire project. This application provides a banking interface for SMEs and startups in Singapore.
-
-## 🚀 Features
-
-- **Modern Tech Stack**: Built with React 19, TypeScript, and Vite
-- **Responsive Design**: Mobile-first approach with Ant Design components
-- **State Management**: Redux Toolkit for global state management
-- **Styling**: Tailwind CSS for utility-first styling
-- **Mock Service Worker**: API mocking for development
-- **Type Safety**: Full TypeScript support
-- **Code Quality**: ESLint configuration for code standards
-
-## 📋 Prerequisites
-
-Before you begin, ensure you have the following installed:
-
-- **Node.js** (>= 18.0.0)
-- **npm** (>= 9.0.0) or **pnpm** (recommended)
 
 ## 🛠️ Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/ayush/aspire-frontend.git
+   git clone https://github.com/Ayushsinghcs/aspire-frontend.git
    cd aspire-frontend
    ```
 
@@ -35,6 +17,13 @@ Before you begin, ensure you have the following installed:
    # Using pnpm (recommended)
    pnpm install
    ```
+
+## 📋 Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- **Node.js** (>= 18.0.0)
+- **npm** (>= 9.0.0) or **pnpm** (recommended)
 
 ## 🚀 Development
 
@@ -50,31 +39,38 @@ pnpm dev
 
 The application will be available at `http://localhost:5173`
 
-### Available Scripts
 
-- `dev` - Start the development server
-- `build` - Build the application for production
-- `preview` - Preview the production build locally
-- `lint` - Run ESLint to check code quality
+## 🚀 Features
+
+React | TypeScript | Responsive Design | Redux | Tailwind CSS | Mock Server 
 
 ### Project Structure
 
 ```
 src/
-├── assets/          # Static assets (images, icons, etc.)
-├── common/          # Shared utilities and constants
+├── assets/          # Static assets (icons, images, etc.)
+│   └── icons/       # Icon files
 ├── core/            # Core application logic
+│   ├── api/         # API related configurations
+│   ├── config/      # Application configuration
+│   ├── constants/   # Application constants
+│   ├── data/        # Static data files
+│   ├── services/    # Service layer
+│   ├── store/       # Redux store configuration
+│   ├── utils/       # Core utilities
+│   └── browser.ts   # Browser-specific configurations
 ├── features/        # Feature-based components
 │   ├── balance/     # Balance display components
 │   └── cards/       # Card management components
-├── hooks/           # Custom React hooks
-├── modules/         # Module-specific components
-├── services/        # API services and data fetching
-├── shared/          # Shared components and layouts
+├── shared/          # Shared components and utilities
+│   ├── components/  # Reusable UI components
+│   ├── types/       # TypeScript type definitions
+│   └── utils/       # Shared utility functions
 ├── App.tsx          # Main application component
 ├── App.css          # Application styles
 ├── index.css        # Global styles
-└── main.tsx         # Application entry point
+├── main.tsx         # Application entry point
+└── vite-env.d.ts    # Vite environment types
 ```
 
 ## 🎨 UI Components
@@ -131,20 +127,6 @@ pnpm build
 ```
 
 The build output will be in the `dist/` directory.
-
-### Deployment Options
-
-1. **Vercel** (Recommended)
-   - Connect your GitHub repository to Vercel
-   - Automatic deployments on push to main branch
-   - Preview deployments for pull requests
-
-2. **Netlify**
-   - Drag and drop the `dist/` folder
-   - Or connect your repository for automatic deployments
-
-3. **Static Hosting**
-   - Upload the contents of `dist/` to any static hosting service
 
 ## 🔍 Code Quality
 

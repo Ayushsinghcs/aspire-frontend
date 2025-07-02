@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.app-layout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100dvh;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: "Open Sans", sans-serif;
+  align-items: stretch;
+}
+
+.sider {
+  flex: 0 0 340px !important;
+  width: 340px !important;
+  max-width: 340px !important;
+  min-width: 340px !important;
+  padding: 48px;
+  background-color: #0C365A;
+}
+
+.content {
+  width: 1026px;
+  overflow-y: auto;
+}
+
+.ant-menu::before {
+  content: none !important;
+}
+
+.ant-menu-horizontal .ant-menu-item {
+  color: #DDD;
+}
+
+.ant-menu-horizontal>.ant-menu-item-selected {
+  color: #01D167;
+}
+
+.ant-menu-horizontal .ant-menu-title-content {
+  margin: 0;
+}
+
+.ant-tabs-nav::before {
+  border-bottom: none !important;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  font-weight: 500;
+}
+
+.ant-tabs .ant-tabs-tab {
+  padding: 4.5px 0;
+}
+
+.ant-carousel .slick-dots {
+  position: relative;
+  bottom: 0;
+  margin-top: 16px;
+  width: 414px;
+}
+
+.ant-carousel .slick-dots li,
+.ant-carousel .slick-dots li button {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+}
+
+.ant-carousel .slick-dots li button {
+  background-color: #01D167;
+  opacity: 20%;
+}
+
+.ant-carousel .slick-dots li::after {
+  background-color: #01D167;
+  height: 8px;
+  width: 16px;
+}
+
+.ant-carousel .slick-dots li.slick-active {
+  height: 8px;
+  width: 16px;
+  border-radius: 8px;
+}
+
+.slick-slide.slick-active .aspire-card {
+  transform: scaleY(1);
+}
+
+.slick-slide .aspire-card {
+  transform: scaleY(0.9);
+}
+
+.ant-collapse {
+  border: 1px solid #FCFCFC;
+  box-shadow: 0 2px 12px #00000014;
+}
+
+.ant-collapse .ant-collapse-content {
+  border-top: 1px solid #00000014;
+}
+
+/* Hide scrollbar but still scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .content {
+    width: 100% !important;
+  }
+
+  .ant-tabs-tab-btn {
+    color: #FFFFFF50;
+    font-size: 13px;
+  }
+
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #FFFFFF;
+  }
+
+  .ant-carousel .slick-dots {
+    width: 358px;
+  }
+
+  .ant-carousel .slick-dots li button {
+    background-color: #01D167;
+    opacity: 10%;
+  }
+
+  .slick-list {
+    padding-left: 0 !important;
+    padding-right: 20px !important;
+  }
+}

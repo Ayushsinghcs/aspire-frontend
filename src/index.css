@@ -1,0 +1,50 @@
+@layer theme, base, antd, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@theme {
+  --color-primary: #01D167;
+  --color-secondary: #325BAF;
+  --color-background: #0C365A;
+  --color-black: #222222;
+  --color-blue: #23CEFD;
+  --color-light-blue: #EDF3FF;
+  --color-gray-1: #DDD;
+  --color-border: #FCFCFC;
+  --text-md: 15px;
+}
+
+@layer components {
+  /* .container {
+    display: flex;
+    width: 1366px;
+    height: 100vh;
+    margin: 0 auto;
+  } */
+  
+  .custom-tabs .ant-tabs-tab {
+    font-family: 'Avenir Next', 'Regular', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+  }
+  
+  .custom-tabs .ant-tabs-tab-btn {
+    font-family: 'Avenir Next', 'Regular', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+  }
+  
+  .custom-tabs .ant-tabs-tab.ant-tabs-tab-active {
+    font-family: 'Avenir Next', 'Demi Bold', sans-serif;
+    font-weight: 600;
+  }
+  
+  .custom-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    font-family: 'Avenir Next', 'Demi Bold', sans-serif;
+    font-weight: 600;
+  }
+}
